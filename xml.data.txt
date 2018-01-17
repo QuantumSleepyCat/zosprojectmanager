@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<transfer>
+<transfer-name>Transfer request from T(Preprod) to T.LIVE</transfer-name>
+<application-name>TESTap3</application-name>
+<project-id/>
+<requester/>
+<region-name/>
+<transfer-date/>
+<item>
+<item-name>Promote</item-name>
+<item-member-count>1</item-member-count>
+<dataset>
+<item-value>USER06A.JCLLIB</item-value>
+<item-remark>USER06A.JCLLIB.NEW331</item-remark>
+<member>HELLO</member>
+</dataset>
+</item>
+</transfer>

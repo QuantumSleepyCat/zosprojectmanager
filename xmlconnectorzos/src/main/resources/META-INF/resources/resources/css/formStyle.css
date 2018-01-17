@@ -1,0 +1,36 @@
+#input_form
+{
+    width: 70%;
+    top: 10px;
+    border-radius: 5px;
+    left:1%;
+    position: relative;
+    padding: 100px;
+    float: left;
+    border: 1px solid #808080;
+}
+
+.add_options
+{
+    position: relative;
+    float: left;
+    left: 2%;
+    top: 10px;
+    border: 1px solid #808080;
+    border-radius: 5px;
+    width: 27%;
+    padding: 2%;
+}
+
+.statusbar
+{
+    padding: 2%;
+    position: relative;
+}
+
+#status
+{
+    right: 10px;
+    position: absolute;
+    color: green;
+}
