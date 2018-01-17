@@ -11,7 +11,7 @@
 
     <groupId>by.iba.projectmanager</groupId>
     <artifactId>emailsender</artifactId>
-
+    <packaging>jar</packaging>
     <dependencies>
         <dependency>
             <groupId>javax.mail</groupId>

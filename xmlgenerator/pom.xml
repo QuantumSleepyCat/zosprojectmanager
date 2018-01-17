@@ -11,7 +11,7 @@
 
     <groupId>by.iba.projectmanager</groupId>
     <artifactId>xmlgenerator</artifactId>
-
+    <packaging>jar</packaging>
 
     <dependencies>
         <dependency>

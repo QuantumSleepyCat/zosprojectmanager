@@ -11,7 +11,7 @@
 
     <groupId>by.iba.projectmanager.logsgetter</groupId>
     <artifactId>logsgetter</artifactId>
-
+    <packaging>jar</packaging>
 
     <dependencies>
         <dependency>
