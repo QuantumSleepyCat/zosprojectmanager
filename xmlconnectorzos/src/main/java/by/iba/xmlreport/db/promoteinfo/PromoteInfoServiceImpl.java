@@ -1,7 +1,7 @@
 package by.iba.xmlreport.db.promoteinfo;
 
 import by.iba.xmlreport.db.dao.PromoteInfoDAO;
-import by.iba.xmlreport.db.entities.PromoteInfo;
+import by.iba.xmlreport.db.entities.promoting.PromoteInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

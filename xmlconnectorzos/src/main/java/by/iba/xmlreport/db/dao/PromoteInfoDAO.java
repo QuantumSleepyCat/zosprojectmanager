@@ -1,6 +1,6 @@
 package by.iba.xmlreport.db.dao;
 
-import by.iba.xmlreport.db.entities.PromoteInfo;
+import by.iba.xmlreport.db.entities.promoting.PromoteInfo;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
