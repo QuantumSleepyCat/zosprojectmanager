@@ -20,7 +20,7 @@ public class XmlreportApplication extends SpringBootServletInitializer {
 
 	@Override
 	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-		return application.sources(XmlreportApplication.class);
+		return application.sources(XmlreportApplication.class).properties();
 	}
 
 	public static void main(String[] args) {
