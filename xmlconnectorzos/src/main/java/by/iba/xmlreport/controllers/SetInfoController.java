@@ -5,7 +5,6 @@ package by.iba.xmlreport.controllers;
 
 import by.iba.emailsender.email.EmailSender;
 import by.iba.emailsender.email.MessageCreator;
-import by.iba.projmanmodels.model.HostInfo;
 import by.iba.projmanmodels.model.PageInfoModel;
 import by.iba.projmanmodels.model.listforreport.ListForReport;
 import by.iba.projmanmodels.model.status.StatusList;
@@ -14,12 +13,11 @@ import by.iba.projmanmodels.model.statuslist.StatusBarList;
 import by.iba.projmanmodels.model.statuslist.item.StatusItem;
 import by.iba.jmsmqworker.services.jms.JmsServiceSend;
 
-import by.iba.xmlreport.db.promoteinfo.PromoteInfoService;
+import by.iba.xmlreport.db.services.promoteinfo.PromoteInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;

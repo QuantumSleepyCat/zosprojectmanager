@@ -18,8 +18,17 @@ public class DataSet {
     private String itemRemark;
     @OneToMany(mappedBy = "dataSet")
     private List<Member> members;
+    @ManyToOne
+    @JoinColumn(name = "id_item")
+    private Item item;
 
+    public Item getItem() {
+        return item;
+    }
 
+    public void setItem(Item item) {
+        this.item = item;
+    }
 
     public String getItemValue() {
         return itemValue;

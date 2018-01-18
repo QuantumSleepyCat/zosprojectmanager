@@ -1,4 +1,4 @@
-package by.iba.xmlreport.db.promoteinfo;
+package by.iba.xmlreport.db.services.promoteinfo;
 
 import by.iba.xmlreport.db.dao.PromoteInfoDAO;
 import by.iba.xmlreport.db.entities.promoting.PromoteInfo;
