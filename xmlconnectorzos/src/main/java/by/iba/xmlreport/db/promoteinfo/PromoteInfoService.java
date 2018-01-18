@@ -1,6 +1,6 @@
 package by.iba.xmlreport.db.promoteinfo;
 
-import by.iba.xmlreport.db.entities.PromoteInfo;
+import by.iba.xmlreport.db.entities.promoting.PromoteInfo;
 
 import java.util.List;
 

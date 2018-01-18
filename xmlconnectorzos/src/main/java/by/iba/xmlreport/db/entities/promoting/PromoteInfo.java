@@ -1,4 +1,4 @@
-package by.iba.xmlreport.db.entities;
+package by.iba.xmlreport.db.entities.promoting;
 
 
 import javax.persistence.*;
