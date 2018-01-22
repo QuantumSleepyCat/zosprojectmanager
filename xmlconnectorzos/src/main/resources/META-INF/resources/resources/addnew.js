@@ -27,7 +27,7 @@ function addfields() {
         {
             html+=' <div class="input-group" style="margin-bottom: 10px;">' +
                 '                     <span class="input-group-addon">Member</span>' +
-                '                     <input  name="items['+countMain+'].dataSets['+i+'].members['+j+']" type="text" class="form-control">' +
+                '                     <input  name="items['+countMain+'].dataSets['+i+'].members['+j+'].name" type="text" class="form-control">' +
                 '                    </div>'
         }
     }

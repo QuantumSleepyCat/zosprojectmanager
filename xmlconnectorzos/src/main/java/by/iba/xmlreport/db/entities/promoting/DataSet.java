@@ -1,12 +1,13 @@
 package by.iba.xmlreport.db.entities.promoting;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 @Table(name = "dataset")
-public class DataSet {
+public class DataSet implements Serializable{
 
 
     @Id
@@ -21,6 +22,11 @@ public class DataSet {
     @ManyToOne
     @JoinColumn(name = "id_item")
     private Item item;
+
+    public DataSet()
+    {
+        members=new ArrayList<>();
+    }
 
     public Item getItem() {
         return item;

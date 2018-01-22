@@ -14,7 +14,7 @@ import java.io.IOException;
 
 @SpringBootApplication
 @Configuration
-@ComponentScan(basePackages = "by.iba")
+@ComponentScan(basePackages = "by.iba.*")
 @EnableAutoConfiguration
 public class XmlreportApplication extends SpringBootServletInitializer {
 

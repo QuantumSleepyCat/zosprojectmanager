@@ -21,22 +21,12 @@
             <span class="input-group-addon">Application name</span>
             <form:input path="applicationName" type="text" class="form-control" name="name"/>
         </div>
-        <div class="input-group" style="margin-bottom: 10px;">
-            <span class="input-group-addon">Project/CR id</span>
-            <form:input path="prodect_CR_ID" type="text" class="form-control" name="prodect_CR_ID"/>
-        </div>
-        <div class="input-group" style="margin-bottom: 10px;">
-            <span class="input-group-addon">Requester</span>
-            <form:input path="requester" type="text" class="form-control" name="requester"/>
-        </div>
+
         <div class="input-group" style="margin-bottom: 10px;">
             <span class="input-group-addon">Transfer date</span>
-            <form:input path="transferDate" type="text" class="form-control" name="transferDate"/>
+            <form:input path="date" type="text" class="form-control" name="transferDate"/>
         </div>
-        <div class="input-group" style="margin-bottom: 10px;">
-            <span class="input-group-addon">Region</span>
-            <form:input path="region" type="text" class="form-control" name="region"/>
-        </div>
+
         <%--  <details>
               <summary>Item for promote</summary>
               <div class="input-group" style="margin-bottom: 10px;">

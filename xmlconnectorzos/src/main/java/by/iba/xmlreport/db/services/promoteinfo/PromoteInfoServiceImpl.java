@@ -1,9 +1,10 @@
 package by.iba.xmlreport.db.services.promoteinfo;
 
 import by.iba.xmlreport.db.dao.PromoteInfoDAO;
-import by.iba.xmlreport.db.entities.promoting.PromoteInfo;
+import by.iba.xmlreport.db.entities.promoting.PageInfoModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -14,23 +15,23 @@ public class PromoteInfoServiceImpl implements PromoteInfoService {
     private PromoteInfoDAO promoteInfoDAO;
 
     @Override
-    public PromoteInfo findById(long id) {
+    public PageInfoModel findById(long id) {
         return promoteInfoDAO.findById(id);
     }
 
     @Override
-    public List<PromoteInfo> findAll() {
+    public List<PageInfoModel> findAll() {
         return promoteInfoDAO.findAll();
     }
 
     @Override
-    public void addOrUpdate(PromoteInfo promoteInfo) {
-        promoteInfoDAO.save(promoteInfo);
+    public void addOrUpdate(PageInfoModel pageInfoModel) {
+        promoteInfoDAO.save(pageInfoModel);
     }
 
     @Override
-    public void delete(PromoteInfo promoteInfo) {
-        promoteInfoDAO.delete(promoteInfo);
+    public void delete(PageInfoModel pageInfoModel) {
+        promoteInfoDAO.delete(pageInfoModel);
     }
 
     @Override

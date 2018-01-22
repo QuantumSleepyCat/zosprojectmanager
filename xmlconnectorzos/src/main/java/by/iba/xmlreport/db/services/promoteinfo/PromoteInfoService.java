@@ -1,13 +1,13 @@
 package by.iba.xmlreport.db.services.promoteinfo;
 
-import by.iba.xmlreport.db.entities.promoting.PromoteInfo;
+import by.iba.xmlreport.db.entities.promoting.PageInfoModel;
 
 import java.util.List;
 
 public interface PromoteInfoService {
-    PromoteInfo findById(long id);
-    List<PromoteInfo> findAll();
-    void addOrUpdate(PromoteInfo promoteInfo);
-    void delete(PromoteInfo promoteInfo);
+    PageInfoModel findById(long id);
+    List<PageInfoModel> findAll();
+    void addOrUpdate(PageInfoModel pageInfoModel);
+    void delete(PageInfoModel pageInfoModel);
     void delete(long id);
 }

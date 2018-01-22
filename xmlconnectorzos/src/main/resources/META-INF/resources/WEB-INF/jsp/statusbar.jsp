@@ -13,7 +13,6 @@
 </head>
 <body>
 <jsp:include page="navigate.jsp"/>
-
 <div class="statusbar">
     <div class="list-group">
         <c:forEach items="${statusList}" var="status">
