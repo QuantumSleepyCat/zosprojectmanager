@@ -46,7 +46,7 @@
 
                     <c:forEach items="${dataset.members}" var="member">
                     <tr>
-                        <td>${member}</td>
+                        <td>${member.name}</td>
                         <td></td>
                     </tr>
                     </c:forEach>

@@ -9,7 +9,7 @@ import java.io.Serializable;
 public class SendInfo implements Serializable{
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
-    private int id;
+    private long id;
     @Column
     private String username;
     @Column
@@ -61,8 +61,7 @@ public class SendInfo implements Serializable{
         this.cl_email = cl_email;
     }
 
-    @Override
-    public int hashCode() {
+    public int randomHash() {
         return (int) ((username.length()+
                         password.length()+
                         server.length()+

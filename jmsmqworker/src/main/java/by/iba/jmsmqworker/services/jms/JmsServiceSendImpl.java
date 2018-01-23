@@ -18,6 +18,7 @@ import javax.xml.transform.TransformerFactoryConfigurationError;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jms.core.JmsOperations;
 import org.springframework.jms.core.MessageCreator;
@@ -26,7 +27,7 @@ import org.springframework.stereotype.Service;
 import com.ibm.mq.jms.MQQueue;
 import com.ibm.msg.client.wmq.WMQConstants;
 
-import by.iba.projmanmodels.model.DTO.JCLAndXMLDoc;
+import org.w3c.dom.Document;
 
 @Service
 public class JmsServiceSendImpl implements JmsServiceSend{
@@ -34,7 +35,7 @@ public class JmsServiceSendImpl implements JmsServiceSend{
 	@Autowired
 	JmsOperations jmsOperations;
 	
-	public void send(JCLAndXMLDoc jclAndXMLDoc){
+	public void send(Document document){
 		
 		
 		String filename = "xml.data.txt";
@@ -54,7 +55,7 @@ public class JmsServiceSendImpl implements JmsServiceSend{
 			
 			transformer = TransformerFactory.newInstance()
 			        .newTransformer();			 
-		        DOMSource source = new DOMSource(jclAndXMLDoc.getXmlDocument());
+		        DOMSource source = new DOMSource(document);
 		        StreamResult result = new StreamResult(file);
 		        transformer.setOutputProperty(OutputKeys.INDENT, "yes");
 		        transformer.transform(source, result);

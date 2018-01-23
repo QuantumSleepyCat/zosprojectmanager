@@ -1,21 +1,23 @@
 package by.iba.xmlreport.controllers;
 
 
-
-import by.iba.projmanmodels.model.PageInfoModel;
-import by.iba.projmanmodels.model.listforreport.ListForReport;
-import by.iba.projmanmodels.model.status.StatusList;
+import by.iba.xmlreport.db.entities.promoting.StatusItem;
+import by.iba.xmlreport.db.services.facade.DBServices;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.client.RestTemplate;
+
 
 @Controller
 @RequestMapping("/answer")
 public class AnswerController {
+
+    @Autowired
+    private DBServices dbServices;
 
     @PostMapping(params = "approve")
     public String approveMethod(@RequestParam("comment")String comment,
@@ -24,13 +26,11 @@ public class AnswerController {
     {
         System.out.println(idRep);
         int id = Integer.valueOf(idRep);
-        PageInfoModel pageInfoModel = ListForReport
-                .getInstance()
-                .getListForReport()
-                .get(id);
-        StatusList.getInstance().getStatusValues().get(pageInfoModel.getId()).setStatus("Approved");
-        StatusList.getInstance().getStatusValues().get(pageInfoModel.getId()).setComment(comment);
-        StatusList.getInstance().getStatusValues().get(pageInfoModel.getId()).setIdInList(id);
+        StatusItem statusItem=dbServices.getStatusItemService()
+                .findByPageInfo(dbServices.getPromoteInfoService().findById(id));
+        statusItem.setStatus("Approved")
+                .setComment(comment);
+        dbServices.getStatusItemService().addOrUpdate(statusItem);
         return "redirect:/answer/result?comment="+comment+"&result=approve";
     }
 
@@ -40,14 +40,11 @@ public class AnswerController {
                                Model model)
     {
         int id = Integer.valueOf(idRep);
-        PageInfoModel pageInfoModel = ListForReport
-                .getInstance()
-                .getListForReport()
-                .get(id);
-        ListForReport.getInstance().deleteElementFromList(id);
-        StatusList.getInstance().getStatusValues().get(pageInfoModel.getId()).setStatus("Rejected");
-        StatusList.getInstance().getStatusValues().get(pageInfoModel.getId()).setComment(comment);
-        StatusList.getInstance().getStatusValues().get(pageInfoModel.getId()).setIdInList(id);
+        StatusItem statusItem=dbServices.getStatusItemService()
+                .findByPageInfo(dbServices.getPromoteInfoService().findById(id));
+        statusItem.setStatus("Rejected")
+                .setComment(comment);
+        dbServices.getStatusItemService().addOrUpdate(statusItem);
         return "redirect:/answer/result?comment="+comment+"&result=reject";
     }
 

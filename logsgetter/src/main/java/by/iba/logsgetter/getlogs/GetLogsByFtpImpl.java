@@ -28,7 +28,7 @@ public class GetLogsByFtpImpl implements GetLogsByFtp{
 				String dir="logs/"+appName+"/"+fileName;
 				outStr = new BufferedOutputStream(new FileOutputStream(dir));
 				boolean status = client.retrieveFile(fileName, outStr);
-				System.out.println("Рещультат загрузки файла-лога: "+status);
+				System.out.println("Результат загрузки файла-лога: "+status);
 			}
 			outStr.close();
 			

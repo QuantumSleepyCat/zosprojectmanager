@@ -1,71 +1,48 @@
 package by.iba.xmlreport.services.status;
 
 
-import by.iba.projmanmodels.model.status.StatusList;
-import by.iba.projmanmodels.model.status.StatusValue;
-import by.iba.projmanmodels.model.statuslist.StatusBarList;
-import by.iba.projmanmodels.model.statuslist.item.StatusItem;
+import by.iba.xmlreport.db.entities.promoting.StatusItem;
+import by.iba.xmlreport.db.services.facade.DBServices;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class JobStatusValuesImpl implements JobStatusValues {
+
+    @Autowired
+    private DBServices dbServices;
     @Override
     public void updateStatus() {
-        for(StatusValue statusValue:
-                StatusList.getInstance().getStatusValues().values())
-        {
-            try {
-                StatusItem statusItem = StatusBarList.getInstance().getStatusItems().get(
-                        statusValue.getIdInfo()
-                );
-                if(statusValue.getStatus().equals("Approved") &&
-                		!statusItem.getStatus().equals("Finished") && !statusItem.getStatus().equals("In process") &&
-                        !statusItem.getStatus().equals("Failed"))
-                {
-                    statusItem.setStyleClass("list-group-item list-group-item-action list-group-item-success")
-                            .setStatus("Approved")
-                            .setComment(statusValue.getComment());
-                }
-            else if(statusValue.getStatus().equals("Rejected") &&
-            		!statusItem.getStatus().equals("Finished") && !statusItem.getStatus().equals("In process") &&
-                    !statusItem.getStatus().equals("Failed"))
-            {
-                statusItem.setStyleClass("list-group-item list-group-item-action list-group-item-danger")
-                        .setStatus("Rejected")
-                        .setComment(statusValue.getComment());
 
-            }
+            try {
+                for (StatusItem statusItem : dbServices.getStatusItemService().findAll()) {
+                    if (statusItem.getStatus().equals("Approved")) {
+                        statusItem.setStyleClass("list-group-item list-group-item-action list-group-item-success");
+                    } else if (statusItem.getStatus().equals("Rejected")) {
+                        statusItem.setStyleClass("list-group-item list-group-item-action list-group-item-danger");
+                    }
+                    dbServices.getStatusItemService().addOrUpdate(statusItem);
+                }
             }
             catch (Exception ex)
             {
                 System.err.println(ex.getMessage());
             }
-        }
+
     }
 
     @Override
-    public void updateStatusById(int id) {
-         StatusValue statusValue = StatusList.getInstance().getStatusValues().get(id);
+    public void updateStatusById(long id) {
          try {
-             StatusItem statusItem = StatusBarList.getInstance().getStatusItems().get(
-                     statusValue.getIdInfo()
-             );
-             if (statusValue.getStatus().equals("Approved") &&
-                     !statusItem.getStatus().equals("Finished") && !statusItem.getStatus().equals("In process") &&
-                     !statusItem.getStatus().equals("Failed")) {
-                 statusItem.setStyleClass("list-group-item list-group-item-action list-group-item-success")
-                         .setStatus("Approved")
-                         .setComment(statusValue.getComment())
-                         .setIdInList(statusValue.getIdInList());
-                 System.out.println(statusValue.getComment());
-             } else if (statusValue.getStatus().equals("Rejected") &&
-            		 !statusItem.getStatus().equals("Finished") && !statusItem.getStatus().equals("In process") &&
-                     !statusItem.getStatus().equals("Failed")) {
-                 statusItem.setStyleClass("list-group-item list-group-item-action list-group-item-danger")
-                         .setStatus("Rejected")
-                         .setComment(statusValue.getComment());
+              StatusItem statusItem = dbServices.getStatusItemService()
+                      .findById(id);
+                 if (statusItem.getStatus().equals("Approved")) {
+                     statusItem.setStyleClass("list-group-item list-group-item-action list-group-item-success");
+                 } else if (statusItem.getStatus().equals("Rejected")) {
+                     statusItem.setStyleClass("list-group-item list-group-item-action list-group-item-danger");
+                 }
+                 dbServices.getStatusItemService().addOrUpdate(statusItem);
              }
-         }
          catch (Exception ex)
          {
              System.err.println(ex.getMessage());

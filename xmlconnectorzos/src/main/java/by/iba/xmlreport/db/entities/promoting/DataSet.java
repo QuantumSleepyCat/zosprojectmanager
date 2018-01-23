@@ -13,9 +13,9 @@ public class DataSet implements Serializable{
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Long id;
-    @Column
+    @Column(name = "item_value")
     private String itemValue;
-    @Column
+    @Column(name = "item_remark")
     private String itemRemark;
     @OneToMany(mappedBy = "dataSet")
     private List<Member> members;
@@ -68,8 +68,7 @@ public class DataSet implements Serializable{
         this.members = members;
     }
 
-    @Override
-    public int hashCode() {
+    public int randomHash() {
         int code = (int) ((itemValue.length()+itemRemark.length())*(Math.random()*121));
         for(Member member : members)
         {

@@ -40,8 +40,8 @@ public class JmsConfig {
     @Value("${project.mq.receive-timeout}")
     private long receiveTimeout;*/
 	
-	@Autowired
-	private ListenerMQ listenerMQ;
+	//@Autowired
+	//private ListenerMQ listenerMQ;
 
     @Bean
     public MQQueueConnectionFactory mqQueueConnectionFactory() {
@@ -85,7 +85,7 @@ public class JmsConfig {
         return jmsTransactionManager;
     }
 
-   @Bean
+  /* @Bean
    public DefaultMessageListenerContainer appMessageListenerContainer(CachingConnectionFactory cachingConnectionFactory)
    {
 	   DefaultMessageListenerContainer container = new DefaultMessageListenerContainer();
@@ -95,7 +95,7 @@ public class JmsConfig {
 	   //container.setMaxConcurrentConsumers(3);
 	   container.setSessionTransacted(true);
 	   return container;
-   }
+   }*/
     
     @Bean
     public JmsOperations jmsOperations(CachingConnectionFactory cachingConnectionFactory) {

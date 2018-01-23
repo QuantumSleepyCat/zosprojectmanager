@@ -16,7 +16,7 @@
 <div class="statusbar">
     <div class="list-group">
         <c:forEach items="${statusList}" var="status">
-            <a href="/status/${status.id}" class="${status.styleClass}">${status.appName}<span id="status">Status: ${status.status}  Initiator:${status.initiator}</span></a>
+            <a href="/status/${status.id}" class="${status.styleClass}">${status.pageInfoModel.applicationName}<span id="status">Status: ${status.status}  Initiator:${status.pageInfoModel.requester.login}</span></a>
         </c:forEach>
     </div>
 </div>

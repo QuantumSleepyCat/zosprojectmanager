@@ -16,7 +16,7 @@
 <jsp:include page="navigate.jsp"/>
 
 <div class="statusbar">
-    <h4>${job.appName}</h4>
+    <h4>${job.pageInfoModel.applicationName}</h4>
     <hr>
     <h6>Status: ${job.status}</h6>
     <div class="form-group">
@@ -24,7 +24,7 @@
         <textarea class="form-control" rows="5" id="comment" readonly>${job.comment}</textarea>
     </div>
     <c:if test="${job.status eq 'Approved'}">
-        <a href="/send/${job.idInList}" type="button" class="btn btn-outline-primary">Start</a>
+        <a href="/send/${job.pageInfoModel.id}" type="button" class="btn btn-outline-primary">Start</a>
     </c:if>
     <p>
 <a class="btn btn-outline-warning btn-sm" data-toggle="collapse" href="#linkcollapse" aria-expanded="false" aria-controls="Collapse">
@@ -47,7 +47,7 @@ Logs
             </c:forEach>
 </div>
 </div>
-    
+
           
     
 </div>

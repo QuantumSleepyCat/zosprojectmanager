@@ -2,7 +2,9 @@ package by.iba.xmlreport.db.services.promoteitem;
 
 
 import by.iba.xmlreport.db.dao.PromoteItemDAO;
+import by.iba.xmlreport.db.entities.promoting.DataSet;
 import by.iba.xmlreport.db.entities.promoting.Item;
+import by.iba.xmlreport.db.services.dataset.DataSetService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +15,8 @@ public class PromoteItemServiceImpl implements PromoteItemService{
 
     @Autowired
     private PromoteItemDAO promoteItemDAO;
+    @Autowired
+    private DataSetService dataSetService;
 
     @Override
     public Item findById(long id) {
@@ -27,6 +31,11 @@ public class PromoteItemServiceImpl implements PromoteItemService{
     @Override
     public void addOrUpdate(Item item) {
         promoteItemDAO.save(item);
+        for(DataSet dataSet:item.getDataSets())
+        {
+            dataSet.setItem(item);
+            dataSetService.addOrUpdate(dataSet);
+        }
     }
 
     @Override

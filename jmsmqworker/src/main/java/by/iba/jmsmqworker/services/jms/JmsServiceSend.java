@@ -1,7 +1,7 @@
 package by.iba.jmsmqworker.services.jms;
 
-import by.iba.projmanmodels.model.DTO.JCLAndXMLDoc;
+import org.w3c.dom.Document;
 
 public interface JmsServiceSend {
-	void send(JCLAndXMLDoc jclAndXMLDoc);
+	void send(Document document);
 }

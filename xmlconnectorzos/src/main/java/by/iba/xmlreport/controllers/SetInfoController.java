@@ -10,12 +10,14 @@ import by.iba.projmanmodels.model.listforreport.ListForReport;
 import by.iba.projmanmodels.model.status.StatusList;
 import by.iba.projmanmodels.model.status.StatusValue;
 import by.iba.projmanmodels.model.statuslist.StatusBarList;
-import by.iba.projmanmodels.model.statuslist.item.StatusItem;
+
 import by.iba.jmsmqworker.services.jms.JmsServiceSend;
 
 import by.iba.xmlreport.db.entities.Role;
 import by.iba.xmlreport.db.entities.User;
 import by.iba.xmlreport.db.entities.promoting.PageInfoModel;
+import by.iba.xmlreport.db.entities.promoting.StatusItem;
+import by.iba.xmlreport.db.services.facade.DBServices;
 import by.iba.xmlreport.db.services.promoteinfo.PromoteInfoService;
 import by.iba.xmlreport.db.services.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,10 +37,7 @@ public class SetInfoController {
 	private JmsServiceSend jmsServiceSend;
 
 	@Autowired
-    private PromoteInfoService promoteInfoService;
-
-	@Autowired
-    private UserService userService;
+    private DBServices dbServices;
 
     @GetMapping(value = "/")
     public String setInfoPage(Model model)
@@ -71,9 +70,17 @@ public class SetInfoController {
         //StatusBarList.getInstance().setItem(new StatusItem(pageInfo.getId(),pageInfo.getApplicationName(),
         //        "Awaiting","list-group-item list-group-item-action list-group-item-info",
         //        pageInfo.getSendInfo().getUsername(),"No comment"),pageInfo.getId());
-        User user =userService.findByLogin(authentication.getName());
+        User user =dbServices.getUserService().findByLogin(authentication.getName());
         pageInfo.setRequester(user);
-        promoteInfoService.addOrUpdate(pageInfo);
+        dbServices.getPromoteInfoService().addOrUpdate(pageInfo);
+        dbServices.getStatusItemService().addOrUpdate(new StatusItem("Awaiting",
+                "list-group-item list-group-item-action list-group-item-info","No comment",
+                pageInfo));
+        EmailSender emailSender = new EmailSender("tol9411@yandex.ru",
+                "5bn88kw3");
+        emailSender.send("Promote project",
+               MessageCreator.createMessage(pageInfo.getId()),
+               pageInfo.getSendInfo().getCl_email());
         model.setViewName("redirect:/");
         return model;
     }

@@ -17,7 +17,7 @@ import java.util.List;
 public class PageInfoModel implements Serializable{
     @Id
     @GeneratedValue
-    private int id;
+    private long id;
     @Column(name = "application_name")
     private String applicationName;
     @Column
@@ -25,8 +25,7 @@ public class PageInfoModel implements Serializable{
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User requester;
-    @OneToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
-    @JoinColumn(name = "info_id",referencedColumnName = "id")
+    @OneToMany(mappedBy = "pageInfoModel")
     private List<Item> items;
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "send_info_id")
@@ -38,7 +37,7 @@ public class PageInfoModel implements Serializable{
         sendInfo=new SendInfo();
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
@@ -92,13 +91,12 @@ public class PageInfoModel implements Serializable{
         this.items = items;
     }
 
-    @Override
-    public int hashCode() {
+    public int randomHash() {
         int code = (int) ((applicationName.length()*requester.getLogin().length())*(Math.random()*123));
         for(Item item:items)
         {
-            code+=item.hashCode()*(Math.random()*323+232);
+            code+=item.randomHash()*(Math.random()*323+232);
         }
-        return code+sendInfo.hashCode();
+        return code+sendInfo.randomHash();
     }
 }

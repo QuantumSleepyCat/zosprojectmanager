@@ -17,11 +17,10 @@
 
     <modules>
         <module>xmlconnectorzos</module>
-        <module>logsgetter</module>
+       <!-- <module>logsgetter</module>-->
         <module>models</module>
         <module>jmsmqworker</module>
         <module>emailsender</module>
-        <module>xmlgenerator</module>
     </modules>
 
     <dependencies>

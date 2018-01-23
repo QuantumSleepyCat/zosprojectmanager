@@ -13,12 +13,12 @@ public class Item implements Serializable{
 
     @Id
     @GeneratedValue
-    private Long id;
+    private long id;
     @Column
     private String name;
     @OneToMany(mappedBy = "item")
     private List<DataSet> dataSets;
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToOne
     @JoinColumn(name = "info_id")
     private PageInfoModel pageInfoModel;
 
@@ -64,12 +64,11 @@ public class Item implements Serializable{
         this.dataSets = dataSets;
     }
 
-    @Override
-    public int hashCode() {
+    public int randomHash() {
         int code = (int) (name.length()+(Math.random()*23));
         for(DataSet dataSet : dataSets)
         {
-            code+=dataSet.hashCode();
+            code+=dataSet.randomHash();
         }
         return code;
     }

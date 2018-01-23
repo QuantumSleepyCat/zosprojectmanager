@@ -1,8 +1,11 @@
-package by.iba.xmlgenerator.xmlcreate;
+package xmlcreate;
 
 
-import by.iba.projmanmodels.model.DataSet;
-import by.iba.projmanmodels.model.PageInfoModel;
+
+
+import by.iba.xmlreport.db.entities.promoting.DataSet;
+import by.iba.xmlreport.db.entities.promoting.Member;
+import by.iba.xmlreport.db.entities.promoting.PageInfoModel;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
@@ -30,20 +33,12 @@ public class XMLFile {
             appName.setTextContent(pageInfo.getApplicationName());
             transfer.appendChild(appName);
 
-            Element projectId = document.createElement("project-id");
-            projectId.setTextContent(pageInfo.getProdect_CR_ID());
-            transfer.appendChild(projectId);
-
             Element requester = document.createElement("requester");
-            requester.setTextContent(pageInfo.getRequester());
+            requester.setTextContent(pageInfo.getRequester().getLogin());
             transfer.appendChild(requester);
 
-            Element regionName = document.createElement("region-name");
-            regionName.setTextContent(pageInfo.getRegion());
-            transfer.appendChild(regionName);
-
             Element transferDate = document.createElement("transfer-date");
-            transferDate.setTextContent(pageInfo.getTransferDate());
+            transferDate.setTextContent(pageInfo.getDate().toString());
             transfer.appendChild(transferDate);
 
            for(int i=0;i<pageInfo.getItems().size();i++)
@@ -71,11 +66,11 @@ public class XMLFile {
                    itemRemark.setTextContent(pageInfo.getItems().get(i).getDataSets()
                            .get(j).getItemRemark());
                    dataset.appendChild(itemRemark);
-                   for(String member:pageInfo.getItems().get(i)
+                   for(Member member:pageInfo.getItems().get(i)
                            .getDataSets().get(j).getMembers())
                    {
                        Element memberData = document.createElement("member");
-                       memberData.setTextContent(member);
+                       memberData.setTextContent(member.getName());
                        dataset.appendChild(memberData);
                    }
                }

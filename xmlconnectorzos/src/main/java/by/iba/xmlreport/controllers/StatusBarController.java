@@ -3,6 +3,7 @@ package by.iba.xmlreport.controllers;
 
 import by.iba.xmlreport.controllers.logutils.GettingListLogs;
 import by.iba.projmanmodels.model.statuslist.StatusBarList;
+import by.iba.xmlreport.db.services.facade.DBServices;
 import by.iba.xmlreport.services.status.JobStatusValues;
 
 import java.util.ArrayList;
@@ -25,27 +26,29 @@ public class StatusBarController {
 
     @Autowired
     private GettingListLogs gettingListLogs;
-    
+
+    @Autowired
+    private DBServices dbServices;
     @GetMapping
     public String getStatus(Model model)
     {
         jobStatusValues.updateStatus();
-        model.addAttribute("statusList", StatusBarList.getInstance().getStatusItems().values());
+        model.addAttribute("statusList", dbServices.getStatusItemService().findAll());
         return "statusbar";
     }
 
     @GetMapping("/{id}")
-    public String getStatusJob(@PathVariable int id, Model model)
+    public String getStatusJob(@PathVariable long id, Model model)
     {
         jobStatusValues.updateStatusById(id);
         List<String[]> logList = new ArrayList<>();
-        String[] logParts = gettingListLogs.execute(StatusBarList.getInstance().getStatusItems().get(id).getLogs());
+       String[] logParts = gettingListLogs.execute(dbServices.getStatusItemService().findById(id).getLogs());
         for(String logPart:logParts)
         {
-        	logList.add(logPart.split("\n"));
+        logList.add(logPart.split("\n"));
         }
-        model.addAttribute("job",StatusBarList.getInstance().getStatusItems().get(id));
-        model.addAttribute("logs",logList);
+        model.addAttribute("job",dbServices.getStatusItemService().findById(id));
+       model.addAttribute("logs",logList);
         return "jobstatus";
     }
 }

@@ -6,21 +6,27 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
+import by.iba.xmlreport.db.entities.promoting.StatusItem;
+import by.iba.xmlreport.db.services.facade.DBServices;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import by.iba.logsgetter.getlogs.reading.util.StatusChecker;
 import by.iba.projmanmodels.model.statuslist.StatusBarList;
-import by.iba.projmanmodels.model.statuslist.item.StatusItem;
+
 
 @Service
 public class ReadLogsImpl implements ReadLogs{
 
+	@Autowired
+	DBServices dbServices;
+
 	@Override
 	public void read(String appName, String fileName) {
-		for(StatusItem statusIt : StatusBarList.getInstance().getStatusItems().values())
+		for(StatusItem statusIt : dbServices.getStatusItemService().findAll())
 		{
-			System.out.println(statusIt.getAppName().toUpperCase());
-			String name=statusIt.getAppName();
+			System.out.println(statusIt.getPageInfoModel().getApplicationName().toUpperCase());
+			String name=statusIt.getPageInfoModel().getApplicationName();
 			if(name.equals(appName))
 			{
 				System.out.println("flag");
