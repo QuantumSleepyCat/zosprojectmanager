@@ -8,13 +8,13 @@ import javax.jms.TextMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-//import by.iba.logsgetter.getlogs.GetLogsByFtp;
-//import by.iba.logsgetter.getlogs.reading.ReadLogs;
+import by.iba.logsgetter.getlogs.GetLogsByFtp;
+import by.iba.logsgetter.getlogs.reading.ReadLogs;
 
 @Component
-public class ListenerMQ /*implements MessageListener*/{
+public class ListenerMQ implements MessageListener{
 
-/*	private String appName=null;
+	private String appName=null;
 	@Autowired
 	private GetLogsByFtp getLogs;
 	
@@ -45,6 +45,6 @@ public class ListenerMQ /*implements MessageListener*/{
 			e.printStackTrace();
 		}
         }
-	}*/
+	}
 
 }

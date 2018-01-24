@@ -12,7 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import by.iba.logsgetter.getlogs.reading.util.StatusChecker;
-import by.iba.projmanmodels.model.statuslist.StatusBarList;
+
 
 
 @Service
@@ -43,6 +43,7 @@ public class ReadLogsImpl implements ReadLogs{
 			    	statusIt.setStyleClass("list-group-item list-group-item-danger");
 			    	statusIt.setLogs(logs);
 			    }
+			    dbServices.getStatusItemService().addOrUpdate(statusIt);
 			    }
 			else
 			{

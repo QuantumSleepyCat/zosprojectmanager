@@ -32,11 +32,11 @@
             <version>1.0-SNAPSHOT</version>
         </dependency>
 
-        <!--<dependency>
+        <dependency>
             <groupId>by.iba.projectmanager.logsgetter</groupId>
             <artifactId>logsgetter</artifactId>
             <version>1.0-SNAPSHOT</version>
-        </dependency>-->
+        </dependency>
 
         <dependency>
             <groupId>javax.jms</groupId>

@@ -51,10 +51,10 @@ public class SetInfoController {
                                      @ModelAttribute PageInfoModel pageInfo,
                                      HttpServletRequest httpServletRequest,
                                      Authentication authentication) throws InterruptedException {
-       // pageInfo.setPort(httpServletRequest.getLocalPort());
+        // pageInfo.setPort(httpServletRequest.getLocalPort());
         //StatusBarList.getInstance().iterCounter();
         //pageInfo.setId(StatusBarList.getInstance().getCounter());
-       // ListForReport.getInstance().addElementInList(pageInfo);
+        // ListForReport.getInstance().addElementInList(pageInfo);
         //StatusList.getInstance().addItemInList(new StatusValue(pageInfo.getId(),"Awaiting"));
         //EmailSender emailSender = new EmailSender("tol9411@yandex.ru",
         //        "5bn88kw3");
