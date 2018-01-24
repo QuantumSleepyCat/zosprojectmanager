@@ -2,8 +2,7 @@ package by.iba.xmlreport.controllers;
 
 
 
-import by.iba.projmanmodels.model.listforreport.ListForReport;
-import by.iba.xmlreport.db.services.facade.DBServices;
+import by.iba.jpadb.db.services.facade.DBServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

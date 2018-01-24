@@ -6,20 +6,15 @@ package by.iba.xmlreport.controllers;
 import by.iba.emailsender.email.EmailSender;
 import by.iba.emailsender.email.MessageCreator;
 
-import by.iba.projmanmodels.model.listforreport.ListForReport;
-import by.iba.projmanmodels.model.status.StatusList;
-import by.iba.projmanmodels.model.status.StatusValue;
-import by.iba.projmanmodels.model.statuslist.StatusBarList;
-
 import by.iba.jmsmqworker.services.jms.JmsServiceSend;
 
-import by.iba.xmlreport.db.entities.Role;
-import by.iba.xmlreport.db.entities.User;
-import by.iba.xmlreport.db.entities.promoting.PageInfoModel;
-import by.iba.xmlreport.db.entities.promoting.StatusItem;
-import by.iba.xmlreport.db.services.facade.DBServices;
-import by.iba.xmlreport.db.services.promoteinfo.PromoteInfoService;
-import by.iba.xmlreport.db.services.user.UserService;
+import by.iba.jpadb.db.entities.Role;
+import by.iba.jpadb.db.entities.User;
+import by.iba.jpadb.db.entities.promoting.PageInfoModel;
+import by.iba.jpadb.db.entities.promoting.StatusItem;
+import by.iba.jpadb.db.services.facade.DBServices;
+import by.iba.jpadb.db.services.promoteinfo.PromoteInfoService;
+import by.iba.jpadb.db.services.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
@@ -28,7 +23,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
-import java.net.Authenticator;
 
 @Controller
 public class SetInfoController {

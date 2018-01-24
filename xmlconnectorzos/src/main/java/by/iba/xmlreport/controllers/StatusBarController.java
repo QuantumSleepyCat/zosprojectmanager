@@ -2,8 +2,7 @@ package by.iba.xmlreport.controllers;
 
 
 import by.iba.xmlreport.controllers.logutils.GettingListLogs;
-import by.iba.projmanmodels.model.statuslist.StatusBarList;
-import by.iba.xmlreport.db.services.facade.DBServices;
+import by.iba.jpadb.db.services.facade.DBServices;
 import by.iba.xmlreport.services.status.JobStatusValues;
 
 import java.util.ArrayList;

@@ -3,9 +3,9 @@ package xmlcreate;
 
 
 
-import by.iba.xmlreport.db.entities.promoting.DataSet;
-import by.iba.xmlreport.db.entities.promoting.Member;
-import by.iba.xmlreport.db.entities.promoting.PageInfoModel;
+import by.iba.jpadb.db.entities.promoting.DataSet;
+import by.iba.jpadb.db.entities.promoting.Member;
+import by.iba.jpadb.db.entities.promoting.PageInfoModel;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 

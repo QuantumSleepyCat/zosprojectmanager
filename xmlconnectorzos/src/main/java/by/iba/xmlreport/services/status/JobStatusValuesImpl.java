@@ -1,8 +1,8 @@
 package by.iba.xmlreport.services.status;
 
 
-import by.iba.xmlreport.db.entities.promoting.StatusItem;
-import by.iba.xmlreport.db.services.facade.DBServices;
+import by.iba.jpadb.db.entities.promoting.StatusItem;
+import by.iba.jpadb.db.services.facade.DBServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

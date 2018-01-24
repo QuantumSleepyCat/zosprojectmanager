@@ -21,6 +21,7 @@
         <module>models</module>
         <module>jmsmqworker</module>
         <module>emailsender</module>
+        <module>dbjpa</module>
     </modules>
 
     <dependencies>
