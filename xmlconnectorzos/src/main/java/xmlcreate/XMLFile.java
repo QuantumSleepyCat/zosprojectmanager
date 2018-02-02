@@ -62,10 +62,12 @@ public class XMLFile {
                    itemValue.setTextContent(pageInfo.getItems().get(i).getDataSets()
                    .get(j).getItemValue());
                    dataset.appendChild(itemValue);
-                   Element itemRemark = document.createElement("item-remark");
-                   itemRemark.setTextContent(pageInfo.getItems().get(i).getDataSets()
-                           .get(j).getItemRemark());
-                   dataset.appendChild(itemRemark);
+                   if(!pageInfo.getItems().get(i).getDataSets().get(j).getItemRemark().equals("")) {
+                       Element itemRemark = document.createElement("item-remark");
+                       itemRemark.setTextContent(pageInfo.getItems().get(i).getDataSets()
+                               .get(j).getItemRemark());
+                       dataset.appendChild(itemRemark);
+                   }
                    for(Member member:pageInfo.getItems().get(i)
                            .getDataSets().get(j).getMembers())
                    {
